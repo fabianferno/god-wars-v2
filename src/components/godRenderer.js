@@ -5,24 +5,24 @@ import _r1 from "../assets/images/rarity/_rarity_1.png";
 import _r2 from "../assets/images/rarity/_rarity_2.png";
 import _r3 from "../assets/images/rarity/_rarity_3.png";
 
-const LipRenderer = ({ lip = null, size = 200, style }) => {
-  if (!lip) {
+const GodRenderer = ({ god = null, size = 200, style }) => {
+  if (!god) {
     return null;
   }
   let rarity = _r1;
 
-  if (lip.rarity >= 80) {
+  if (god.rarity >= 80) {
     rarity = _r2;
   }
-  if (lip.rarity >= 95) {
+  if (god.rarity >= 95) {
     rarity = _r3;
   }
 
-  let dnaStr = String(lip.dna);
+  let dnaStr = String(god.dna);
 
   while (dnaStr.length < 16) dnaStr = "0" + dnaStr;
 
-  let lipDeatils = {
+  let godDeatils = {
     bg: dnaStr.substring(0, 2) % 5,
     mask: dnaStr.substring(2, 4) % 5,
     line: dnaStr.substring(4, 6) % 5,
@@ -30,10 +30,10 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
     addonMouth1: dnaStr.substring(8, 10) % 5,
     addonMouth2: dnaStr.substring(10, 12) % 5,
     addonMouth3: dnaStr.substring(12, 14) % 5,
-    name: lip.name,
+    name: god.name,
   };
 
-  const lipStyle = {
+  const godStyle = {
     width: "100%",
     height: "100%",
     position: "absolute",
@@ -49,28 +49,28 @@ const LipRenderer = ({ lip = null, size = 200, style }) => {
         ...style,
       }}
     >
-      <img alt={"bg"} src={parts.bg[lipDeatils.bg]} style={lipStyle} />
-      <img alt={"mask"} src={parts.mask[lipDeatils.mask]} style={lipStyle} />
-      <img alt={"line"} src={parts.line[lipDeatils.line]} style={lipStyle} />
-      <img alt={"addon"} src={parts.addon[lipDeatils.addon]} style={lipStyle} />
+      <img alt={"bg"} src={parts.bg[godDeatils.bg]} style={godStyle} />
+      <img alt={"mask"} src={parts.mask[godDeatils.mask]} style={godStyle} />
+      <img alt={"line"} src={parts.line[godDeatils.line]} style={godStyle} />
+      <img alt={"addon"} src={parts.addon[godDeatils.addon]} style={godStyle} />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth1[lipDeatils.addonMouth1]}
-        style={lipStyle}
+        src={parts.addonMouth1[godDeatils.addonMouth1]}
+        style={godStyle}
       />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth2[lipDeatils.addonMouth2]}
-        style={lipStyle}
+        src={parts.addonMouth2[godDeatils.addonMouth2]}
+        style={godStyle}
       />
       <img
         alt={"addon_mouth"}
-        src={parts.addonMouth3[lipDeatils.addonMouth3]}
-        style={lipStyle}
+        src={parts.addonMouth3[godDeatils.addonMouth3]}
+        style={godStyle}
       />
-      <img alt={"rarity"} src={rarity} style={lipStyle} />
+      <img alt={"rarity"} src={rarity} style={godStyle} />
     </div>
   );
 };
 
-export default LipRenderer;
+export default GodRenderer;
