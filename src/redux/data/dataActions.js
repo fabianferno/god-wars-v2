@@ -26,19 +26,19 @@ export const fetchData = (account) => {
     dispatch(fetchDataRequest());
     try {
       
-      let allLips = await store
+      let allGods = await store
         .getState()
-        .blockchain.lipToken.methods.getLips()
+        .blockchain.godToken.methods.getGods()
         .call();
-      let allOwnerLips = await store
+      let allOwnerGods = await store
         .getState()
-        .blockchain.lipToken.methods.getOwnerLips(account)
+        .blockchain.godToken.methods.getOwnerGods(account)
         .call();
 
       dispatch(
         fetchDataSuccess({
-          allLips,
-          allOwnerLips,
+          allGods,
+          allOwnerGods,
         })
       );
     } catch (err) {

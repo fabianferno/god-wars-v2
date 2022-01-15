@@ -1,6 +1,6 @@
 // constants
 import Web3 from "web3";
-import LipToken from "../../contracts/LipToken.json";
+import GodToken from "../../contracts/GodToken.json";
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -37,20 +37,17 @@ export const connect = () => {
     if (window.ethereum) {
       let web3 = new Web3(window.ethereum);
       try {
-        
-        if (true) {
-
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          const lipToken = new web3.eth.Contract(
-            LipToken,
+          const godToken = new web3.eth.Contract(
+            GodToken,
             "0x4AFfa4c6e3dBFF8D5cd43ce688B2f2f2eeA64B3f"
           );
           console.log(accounts)
-          console.log(lipToken)
+          console.log(godToken)
           dispatch(
             connectSuccess({
               account: accounts[0],
-              lipToken: lipToken,
+              godToken: godToken,
               web3: web3,
             })
           );
@@ -61,10 +58,6 @@ export const connect = () => {
           window.ethereum.on("chainChanged", () => {
             window.location.reload();
           });
-          // Add listeners end
-        } else {
-          dispatch(connectFailed("Change network to Polygon."));
-        }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));
       }
