@@ -125,8 +125,7 @@ table {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -150,7 +149,7 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  font-family: "Baloo 2";
+  font-family: "Montserrat", sans-serif;
 }
 
 html {

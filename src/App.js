@@ -6,6 +6,7 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import GodRenderer from "./components/godRenderer";
 import _color from "./assets/images/bg/_color.png";
+import "./assets/css/bootstrap.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function App() {
 
   const mintNFT = (_account, _name) => {
     setLoading(true);
-    console.log(_account)
+    console.log(_account);
     blockchain.godToken.methods
       .createRandomGod(_name)
       .send({
@@ -57,7 +58,7 @@ function App() {
     if (blockchain.account != "" && blockchain.godToken != null) {
       dispatch(fetchData(blockchain.account));
     }
-  }, [blockchain.godToken,blockchain.account]);
+  }, [blockchain.godToken, blockchain.account]);
 
   return (
     <s.Screen image={_color}>
@@ -66,6 +67,7 @@ function App() {
           <s.TextTitle>Connect to the game</s.TextTitle>
           <s.SpacerSmall />
           <button
+            className="btn btn-primary"
             onClick={(e) => {
               e.preventDefault();
               dispatch(connect());
@@ -74,15 +76,14 @@ function App() {
             CONNECT
           </button>
           <s.SpacerXSmall />
-          {blockchain.errorMsg != "" ? (
-            <s.TextDescription>{blockchain.errorMsg}</s.TextDescription>
-          ) : null}
+          {blockchain.errorMsg != "" ? <div>{blockchain.errorMsg}</div> : null}
         </s.Container>
       ) : (
         <s.Container ai={"center"} style={{ padding: "24px" }}>
-          <s.TextTitle>Welcome to the game</s.TextTitle>
+          <div className="text-white h1 fw-bold">Welcome to the God Wars</div>
           <s.SpacerSmall />
           <button
+            className="btn btn-warning fw-bold w-100 "
             disabled={loading ? 1 : 0}
             onClick={(e) => {
               e.preventDefault();
@@ -95,30 +96,76 @@ function App() {
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
             {data.allGods.map((item, index) => {
               return (
-                <s.Container key={index} style={{ padding: "15px" }}>
-                  <GodRenderer god={item} />
-                  <s.SpacerXSmall />
-                  <s.Container>
-                    <s.TextDescription>ID: {item.id}</s.TextDescription>
-                    <s.TextDescription>DNA: {item.dna}</s.TextDescription>
-                    <s.TextDescription>LEVEL: {item.level}</s.TextDescription>
-                    <s.TextDescription>NAME: {item.name}</s.TextDescription>
-                    <s.TextDescription>RARITY: {item.rarity}</s.TextDescription>
-                    <s.TextDescription>ATTACK: {item.attack}</s.TextDescription>
-                    <s.TextDescription>DEFENSE: {item.defense}</s.TextDescription>
-                    <s.TextDescription>STAMINA: {item.stamina}</s.TextDescription>
+                <div className="mx-3 card card-body bg-dark shadow">
+                  <s.Container
+                    key={index}
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <GodRenderer god={item} />
                     <s.SpacerXSmall />
-                    <button
-                      disabled={loading ? 1 : 0}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        levelUpGod(blockchain.account, item.id);
-                      }}
-                    >
-                      Level Up
-                    </button>
+                    <div className="d-flex align-items-center justify-content-center flex-column">
+                      <div className="text-white text-center my-1">
+                        ID:{" "}
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.id}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        DNA:{" "}
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.dna}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        LEVEL:{" "}
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.level}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        NAME:
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.name}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        RARITY:
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.rarity}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        ATTACK:
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.attack}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        DEFENSE:
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.defense}
+                        </span>
+                      </div>
+                      <div className="text-white text-center my-1">
+                        STAMINA:
+                        <span className="ms-2 fw-bold badge pill bg-warning text-dark">
+                          {item.stamina}
+                        </span>
+                      </div>
+                      <s.SpacerXSmall />
+                      <button
+                        className="btn btn-success fw-bold"
+                        disabled={loading ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          levelUpGod(blockchain.account, item.id);
+                        }}
+                      >
+                        Level Up
+                      </button>
+                    </div>
                   </s.Container>
-                </s.Container>
+                </div>
               );
             })}
           </s.Container>
