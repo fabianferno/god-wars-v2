@@ -40,7 +40,7 @@ export const connect = () => {
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const godToken = new web3.eth.Contract(
             GodToken,
-            "0xE193Defb9B90fC1564c4F8F7bB51bf2e4f28b7e1"
+            "0x4927777Af08108e62620B052f4a8577507DB0441"
           );
           console.log(accounts)
           console.log(godToken)

@@ -89,7 +89,7 @@ function App() {
               mintNFT(blockchain.account, "Unknown");
             }}
           >
-            CREATE NFT LIP
+            Create God Based NFT Card
           </button>
           <s.SpacerMedium />
           <s.Container jc={"center"} fd={"row"} style={{ flexWrap: "wrap" }}>
