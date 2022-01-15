@@ -50,7 +50,7 @@ const GodRenderer = ({ god = null, size = 200, style }) => {
       }}
     >
       <img alt={"bg"} src={parts.bg[godDeatils.bg]} style={godStyle} />
-      <img alt={"mask"} src={parts.mask[godDeatils.mask]} style={godStyle} />
+      {/* <img alt={"mask"} src={parts.mask[godDeatils.mask]} style={godStyle} />
       <img alt={"line"} src={parts.line[godDeatils.line]} style={godStyle} />
       <img alt={"addon"} src={parts.addon[godDeatils.addon]} style={godStyle} />
       <img
@@ -68,7 +68,7 @@ const GodRenderer = ({ god = null, size = 200, style }) => {
         src={parts.addonMouth3[godDeatils.addonMouth3]}
         style={godStyle}
       />
-      <img alt={"rarity"} src={rarity} style={godStyle} />
+      <img alt={"rarity"} src={rarity} style={godStyle} /> */}
     </div>
   );
 };
