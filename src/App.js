@@ -13,6 +13,8 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [loading, setLoading] = useState(false);
+  const [eid, setEid] = useState(0);
+  const [name, setName] = useState(" ");
 
   console.log(data);
 
@@ -40,6 +42,25 @@ function App() {
     setLoading(true);
     blockchain.godToken.methods
       .levelUp(_id)
+      .send({
+        from: _account,
+      })
+      .once("error", (err) => {
+        setLoading(false);
+        console.log(err);
+      })
+      .then((receipt) => {
+        setLoading(false);
+        console.log(receipt);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const fight= (_account,_id) => {
+    setLoading(true);
+    console.log(_id,eid);
+    blockchain.godToken.methods
+      .fight(_id,eid)
       .send({
         from: _account,
       })
@@ -86,21 +107,30 @@ function App() {
               <span className="fw-bold h1 d-block">⚡ NFT God Wars ⚡</span>
             </div>
 
+
+            <input
+                  type="text"
+                  className="bg-dark p-3 text-white rounded"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
             <button
               className="btn btn-warning fw-bold btn-lg"
               disabled={loading ? 1 : 0}
               onClick={(e) => {
                 e.preventDefault();
-                mintNFT(blockchain.account, "Unknown");
+                mintNFT(blockchain.account, name);
               }}
             >
+   
+
               Create a new NFT God Card ➕
             </button>
           </div>
 
           <div className="container">
             <section className="mt-5 align-items-center justify-content-center row">
-              {data.allGods.map((item, index) => {
+              {data.allOwnerGods.map((item, index) => {
                 return (
                   <div className="m-3 col-md-3">
                     <div className="card card-body bg-dark shadow" key={index}>
@@ -127,7 +157,7 @@ function App() {
                               1
                             </th>
                             <td className="text-secondary">ID No.</td>
-                            <td> {item.dna}</td>
+                            <td> {item.id}</td>
                           </tr>
                           <tr>
                             <th className="text-secondary" scope="row">
@@ -181,6 +211,7 @@ function App() {
                         </tbody>
                       </table>
                       <div className="d-flex align-items-center justify-content-center flex-column">
+  
                         <button
                           className="btn btn-light fw-bold w-100"
                           disabled={loading ? 1 : 0}
@@ -190,6 +221,22 @@ function App() {
                           }}
                         >
                           Level Up ⚡
+                        </button>
+                        <input
+                  type="number"
+                  className="bg-dark p-3 text-white rounded"
+                  value={eid}
+                  onChange={(e) => setEid(e.target.value)}
+                />
+                        <button
+                          className="btn btn-light fw-bold w-100"
+                          disabled={loading ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            fight(blockchain.account,item.id);
+                          }}
+                        >
+                          Fight⚡
                         </button>
                       </div>
                     </div>
