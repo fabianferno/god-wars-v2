@@ -13,8 +13,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [loading, setLoading] = useState(false);
-  // const [eid, setEid] = useState(0);
-  const eidRef = useRef(null);
+  const [eid, setEid] = useState(0);
   const [name, setName] = useState("");
 
   console.log(data);
@@ -59,7 +58,6 @@ function App() {
 
   const fight = (_account, _id) => {
     setLoading(true);
-    var eid = eidRef.current.value;
     blockchain.godToken.methods
       .fight(_id, eid)
       .send({
@@ -73,6 +71,7 @@ function App() {
         setLoading(false);
         console.log(receipt);
         dispatch(fetchData(blockchain.account));
+        alert("The Attack is complete. Check the updated stats in your NFT.");
       });
   };
 
@@ -86,10 +85,12 @@ function App() {
     <s.Screen image={_color}>
       {blockchain.account === "" || blockchain.godToken === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
-          <s.TextTitle>Connect to the game</s.TextTitle>
+          <div className="h1 fw-bold text-white card p-3 rounded-3 bg-dark shadow">
+            🦄 Enter the Game 🦄
+          </div>
           <s.SpacerSmall />
           <button
-            className="btn btn-primary"
+            className="btn btn-primary fw-bold"
             onClick={(e) => {
               e.preventDefault();
               dispatch(connect());
@@ -154,7 +155,7 @@ function App() {
                               placeholder="Opp ID"
                               type="number"
                               className="form-control  rounded"
-                              ref={eidRef}
+                              onChange={(e) => setEid(e.target.value)}
                             />
                             <div className="input-group-append">
                               <button
@@ -171,7 +172,7 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      <table class="table table-striped table-dark rounded-3 mt-3 mx-3">
+                      <table className="table table-striped table-dark rounded-3 mt-3 mx-3">
                         <thead>
                           <tr>
                             <th className="text-secondary" scope="col">
