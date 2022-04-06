@@ -86,7 +86,7 @@ function App() {
       {blockchain.account === "" || blockchain.godToken === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
           <div className="h1 fw-bold text-white card p-3 rounded-3 bg-dark shadow">
-            🦄 Enter the Game 🦄
+            🦄 Click to Enter the Game 🦄
           </div>
           <s.SpacerSmall />
           <button
