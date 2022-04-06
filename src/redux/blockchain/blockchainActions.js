@@ -35,7 +35,8 @@ export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
     if (window.ethereum) {
-      let web3 = new Web3(window.ethereum);
+      // let web3 = new Web3(window.ethereum);
+      const web3 = new Web3('https://rpctest.meter.io');
       try {
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const godToken = new web3.eth.Contract(
