@@ -1,4 +1,4 @@
-# Welcome to NFT God Wars
+# Welcome to NFT God Wars 2.0
 
 ##### https://god-wars.vercel.app
 
@@ -8,11 +8,12 @@
 
 ----
 
-![image](https://user-images.githubusercontent.com/57835412/149813968-ad2db5bb-a2ba-4a37-b949-c41bc1bec265.png)
+![image](https://user-images.githubusercontent.com/57835412/162805882-b989fbe4-0499-4209-91f6-70b05ebc1c3f.png)
 
 ----
 
-![image](https://user-images.githubusercontent.com/57835412/149814028-5010dc51-f8e2-4acc-b181-78989526409a.png)
+![image](https://user-images.githubusercontent.com/57835412/162805961-e7c4855b-9155-4376-b483-3ef4c337cdfd.png)
+
 
 ----
 
@@ -20,7 +21,7 @@
 
 ----
 
-![image](https://user-images.githubusercontent.com/57835412/149814370-2d8a85f7-1a0e-4ac1-a44a-b940c811ceb1.png)
+![image](https://user-images.githubusercontent.com/57835412/162806086-c90f52da-1fbb-4b5c-a9be-dffd6cc1184e.png)
 
 ----
 
