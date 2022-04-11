@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import GodRenderer from "./components/godRenderer";
-import _color from "./assets/images/bg/background.jpg";
+import _color from "./assets/images/bg/background.jpeg";
 import "./assets/css/bootstrap.css";
 
 function App() {
@@ -85,28 +85,34 @@ function App() {
     <s.Screen image={_color}>
       {blockchain.account === "" || blockchain.godToken === null ? (
         <s.Container flex={1} ai={"center"} jc={"center"}>
-          <div className="h1 fw-bold text-white card p-3 rounded-3 bg-dark shadow">
-            🦄 Click to Enter the Game 🦄
+          <div
+            className="h1 fw-bold text-white card p-5 shadow"
+            style={{ background: "#222222aa" }}
+          >
+            🦄 Mint Olympus 🦄
           </div>
           <s.SpacerSmall />
           <button
-            className="btn btn-primary fw-bold"
+            className="btn btn-danger"
             onClick={(e) => {
               e.preventDefault();
               dispatch(connect());
             }}
           >
-            CONNECT
+            Connect with Metamask
           </button>
           <s.SpacerXSmall />
           {blockchain.errorMsg !== "" ? <div>{blockchain.errorMsg}</div> : null}
         </s.Container>
       ) : (
         <div className="p-3">
-          <div className="container text-center">
-            <div className="text-white h5 my-5 text-center ">
+          <div
+            className="container text-center"
+            style={{ background: "#000000aa" }}
+          >
+            <div className="text-white h5 my-5 text-center pt-5">
               Welcome to the{" "}
-              <span className="fw-bold h1 d-block">⚡ NFT God Wars ⚡</span>
+              <span className="fw-bold h1 d-block">⚡ Mint Olympus ⚡</span>
             </div>
 
             <input
@@ -123,7 +129,7 @@ function App() {
                 mintNFT(blockchain.account, name);
               }}
             >
-              Create a new NFT God Card ➕
+              Mint a new NFT God Card ➕
             </button>
           </div>
 
@@ -254,9 +260,9 @@ function App() {
         </div>
       )}
 
-      <div className="badge text-secondary py-4 text-center ">
+      <div className="badge text-secondary py-4 text-center fw-normal text-white">
         Built by{" "}
-        <span className="fw-bold text-white d-block">
+        <span className="fw-bold text-white d-block pt-2">
           Fabian Ferno & Surbhit Agrawal
         </span>
       </div>
