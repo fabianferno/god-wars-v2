@@ -89,7 +89,7 @@ function App() {
             className="h1 fw-bold text-white card p-5 shadow"
             style={{ background: "#222222aa" }}
           >
-            🦄 Mint Olympus 🦄
+            🦄 God Wars 2.0 🦄
           </div>
           <s.SpacerSmall />
           <button
@@ -112,7 +112,7 @@ function App() {
           >
             <div className="text-white h5 my-5 text-center pt-5">
               Welcome to the{" "}
-              <span className="fw-bold h1 d-block">⚡ Mint Olympus ⚡</span>
+              <span className="fw-bold h1 d-block">⚡ God Wars 2.0⚡</span>
             </div>
 
             <input
